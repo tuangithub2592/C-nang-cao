@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 char *del(char *str, const char *delim)
 {
