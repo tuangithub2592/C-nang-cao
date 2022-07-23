@@ -4,7 +4,7 @@ int MAXSIZE = 8;
 int stack[8];
 int top = -1;
 
-int isempty()
+int checkEmpty()
 {
    if (top == -1)
       return 1;
@@ -12,9 +12,8 @@ int isempty()
       return 0;
 }
 
-int isfull()
+int checkFull()
 {
-
    if (top == MAXSIZE)
       return 1;
    else
@@ -30,25 +29,24 @@ int pop()
 {
    int data;
 
-   if (!isempty()){
+   if (!checkEmpty()){
       data = stack[top];
       top = top - 1;
       return data;
    }
    else{
-      printf("Could not retrieve data, Stack is empty.\n");
+      printf("stack empty.\n");
    }
 }
 
 int push(int data)
 {
-
-   if (!isfull()){
+   if (!checkFull()){
       top = top + 1;
       stack[top] = data;
    }
    else{
-      printf("Could not insert data, Stack is full.\n");
+      printf("Stack full\n");
    }
 }
 
@@ -61,17 +59,16 @@ int main()
    push(12);
    push(15);
 
-   printf("Element at top of the stack: %d\n", peek());
-   printf("Elements: \n");
+   printf("Top of the stack: %d\n", peek());
+   printf("value: \n");
 
-   while (!isempty())
-   {
+   while (!checkEmpty()){
       int data = pop();
       printf("%d\n", data);
    }
 
-   printf("Stack full: %s\n", isfull() ? "true" : "false");
-   printf("Stack empty: %s\n", isempty() ? "true" : "false");
+   printf("Stack full: %s\n", checkFull() ? "true" : "false");
+   printf("Stack empty: %s\n", checkEmpty() ? "true" : "false");
 
    return 0;
 }
