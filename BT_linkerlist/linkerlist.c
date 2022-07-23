@@ -18,13 +18,9 @@ void push_front(struct Node **head_ref, int new_data)
 void insertAfter(struct Node *prev_node, int new_data)
 {
     if (prev_node == NULL)
-    {
-        printf("the given previous node cannot be NULL");
         return;
-    }
 
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
-
     new_node->data = new_data;
     new_node->next = prev_node->next;
     prev_node->next = new_node;
@@ -43,7 +39,6 @@ void append(struct Node **head_ref, int new_data)
         *head_ref = new_node;
         return;
     }
-
     while (last->next != NULL)
         last = last->next;
     last->next = new_node;
@@ -52,8 +47,7 @@ void append(struct Node **head_ref, int new_data)
 
 void printList(struct Node *node)
 {
-    while (node != NULL)
-    {
+    while (node != NULL){
         printf(" %d ", node->data);
         node = node->next;
     }
